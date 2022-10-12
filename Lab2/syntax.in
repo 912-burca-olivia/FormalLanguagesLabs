@@ -1,0 +1,33 @@
+program = "decl" "{" "VAR" decllist ";" "}" "enddecl" "start" "{" stmtlist "}" "end"
+
+decllist = declaration ";" decllist
+
+declaration = identifier type
+
+type = "char" | "int" | "real" | "arr" | "string"
+
+array = "arr" type "[" nr "]" 
+
+typefinal  = type|arraydecl
+
+stmtlist = stmt | stmt ";" stmtlist
+
+stmt = assignstmt | iostmt | ifstmt | whilestmt | smpdstmt
+
+assignstmt = identifier "=" expression
+
+expression = expression "+" term | expression "-" term | term
+
+term = term "*" factor | term "/" factor | "rest" "(" term "/" factor ")" | factor
+
+factor = "(" expression ")" | identifier
+
+iostmt = "read" ":" identifier | "write" ":" identifier | "write" ":" constant
+
+ifstmt = "if" condition ":" "{" stmt "}" ["elseif" condition ":" "{" stmt "}"] ["else" "{" stmt "}"]
+
+whilestmt = "while" condition ":" "{" stmt "}"
+
+condition = expression relation expression
+
+relation = "<" | "<=" | "=" | ">=" | ">" | "not" "(" relation ")"
