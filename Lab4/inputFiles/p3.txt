@@ -1,0 +1,16 @@
+decl {
+int sum=0;
+int n;
+int x;
+int i;
+} enddecl
+
+start {
+for i=1, i=i+1, i<=n:
+{
+read: x;
+sum=sum+x;
+}
+write: sum;
+
+} end
