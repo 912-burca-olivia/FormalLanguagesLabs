@@ -1,0 +1,39 @@
+decl {
+int nr;
+int d;
+int prime=1;
+} enddecl
+
+start {
+if nr=1 or nr=0:
+{
+prime=0;
+}
+elseif nr=2:
+{
+prime=1;
+}
+elseif rest(nr/2)=0:
+{
+prime=0;
+}
+else {
+d=3;
+while d*d<=nr:
+{
+if nr%d=0:
+{
+prime=0;
+exit;
+}
+d=d+2;
+}
+if prime=1:
+{
+write:"prime";
+}
+else
+{
+write: "not prime";
+}
+} end

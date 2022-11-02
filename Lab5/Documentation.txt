@@ -1,0 +1,38 @@
+The Scanner is implemented using the lists of keywords, operators and separators.
+
+Methods for the Scanner:
+
+-checkIdentifier(): checks if a token is an identifier, using a Regex expression
+	-input: a token (string)
+	-output: true if it is an identifier or false otherwise
+
+
+-checkConstant(): checks if a token is a constant, using a Regex expression
+	-input: a token (string)
+	-output: true if it is a constant or false otherwise
+
+-findStringConstant(): finds the next string constant in a line at a given index
+	-input: a line and an index
+	-output: the string constant found and the index it ends at, or an empty
+		string and the initial index otherwise
+
+-checkPartOfOperator(): checks if a character is an operator or a part of an operator
+			(for the operators that have 2 characters like "<=")
+	-input: a character
+	-output: true if it is an operator or a part of an operator or false otherwise
+
+
+-findOperator(): finds the next operator in a line at a given index
+	-input: a line and an index
+	-output: the operator found and the index it ends at, or an empty
+		string and the initial index otherwise
+
+-tokenize(): the main function of the Scanner that scans a line of a file and tokenizes it.
+We take an index=0 and while that index is smaller than the length of the line, we check
+if the current character is part of an operator. If it is, we find the operator and add it
+to the list of tokens. Otherwise we check if the character is a double quote, and if it is
+we find the next string constant and add it to the tokens list. Otherwise we check if it
+is a separator and do the same thing. If none of these cases applies it means that we have
+either a reserved word or an identifier, and we compute it and add it to the list.
+	-input: a line
+	-output: the list of tokens
