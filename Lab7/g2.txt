@@ -1,0 +1,20 @@
+N := program decllist declaration type array typefinal stmtlist stmt assignstmt expression term factor iostmt ifstmt whilestmt condition relation
+E := 0 1 2 3 4 5 6 7 8 9 A a B b C c D d E e F f G g H h I i J j K k L l M m N n O o P p Q q R r S s T t U u V v W w X x Y y Z z
+P:
+program := "decl" "{" "VAR" decllist ";" "}" "enddecl" "start" "{" stmtlist "}" "end"
+decllist := declaration ";" decllist
+declaration := identifier type
+type := "char" | "int" | "real" | "string"
+array := "arr" type "[" nr "]"
+typefinal  := type|arraydecl
+stmtlist := stmt | stmt ";" stmtlist
+stmt := assignstmt | iostmt | ifstmt | whilestmt | smpdstmt
+assignstmt := identifier "=" expression
+expression := expression "+" term | expression "-" term | term
+term := term "*" factor | term "/" factor | "rest" "(" term "/" factor ")" | factor
+factor := "(" expression ")" | identifier
+iostmt := "read" ":" identifier | "write" ":" identifier | "write" ":" constant
+ifstmt := "if" condition ":" "{" stmt "}" ["elseif" condition ":" "{" stmt "}"] ["else" "{" stmt "}"]
+whilestmt := "while" condition ":" "{" stmt "}"
+condition := expression relation expression
+relation := "<" | "<=" | "=" | ">=" | ">" | "not" "(" relation ")"
