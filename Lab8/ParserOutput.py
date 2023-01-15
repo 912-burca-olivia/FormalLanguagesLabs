@@ -75,11 +75,12 @@ class ParserOutput(object):
     def printTree(self):
         try:
             self.__nodeList.sort(key=lambda x: x.index)
-            file = open(self.__outputFile)
+            file = open(self.__outputFile, "a")
             file.write("Index | Value | Parent | Sibling" + "\n")
             for node in self.__nodeList:
-                file.write(node.index + " | " + node.value + " | " + node.parent + " | " + node.sibling + " \n")
+                file.write(str(node.index) + " | " + str(node.value) + " | " + str(node.parent) + " | " + str(
+                    node.sibling) + " \n")
             file.close()
 
-        except:
+        except Exception as e:
             print("Something went wrong while writing to the output file")
