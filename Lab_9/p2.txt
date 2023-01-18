@@ -1,0 +1,13 @@
+int sum=0;
+int n;
+int x;
+int i=1;
+read(n);
+
+
+while i < n 
+{
+	read(x);
+	sum=sum+x;
+}
+print(sum);
